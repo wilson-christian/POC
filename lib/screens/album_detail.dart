@@ -15,12 +15,16 @@ class DetailAlbum extends StatelessWidget {
       ),
       backgroundColor: colorBackground,
       body: bodyOfPage(album),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Get.toNamed(routeNewAlbum, arguments: album);
-        },
-        child: Icon(Icons.edit),
-      ),
+      floatingActionButton: buildFloatingActionButton(album),
+    );
+  }
+
+  FloatingActionButton buildFloatingActionButton(Album album) {
+    return FloatingActionButton(
+      onPressed: () {
+        Get.toNamed(routeNewAlbum, arguments: album);
+      },
+      child: Icon(Icons.edit),
     );
   }
 

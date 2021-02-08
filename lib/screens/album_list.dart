@@ -24,18 +24,22 @@ class AlbumList extends StatelessWidget {
           return Center(child: CircularProgressIndicator());
         else
           return ListView.builder(
-            itemCount: albumController.productList.length,
+            itemCount: albumController.albumList.length,
             itemBuilder: (context, index) {
-              return AlbumTile(albumController.productList[index]);
+              return AlbumTile(albumController.albumList[index]);
             },
           );
       }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Get.toNamed(routeNewAlbum);
-        },
-        child: Icon(Icons.add),
-      ),
+      floatingActionButton: buildFloatingActionButton(),
+    );
+  }
+
+  FloatingActionButton buildFloatingActionButton() {
+    return FloatingActionButton(
+      onPressed: () {
+        Get.toNamed(routeNewAlbum);
+      },
+      child: Icon(Icons.add),
     );
   }
 }

@@ -42,29 +42,33 @@ class _AddEditAlbumState extends State<AddEditAlbum> {
       ),
       backgroundColor: colorBackground,
       body: bodyOfPage(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          String url = _albumURLTextController.value.text;
-          String title = _albumTitleTextController.value.text;
-          if (!GetUtils.isNullOrBlank(title) && GetUtils.isURL(url)) {
-            if (isEdit) {
-              album.title = title;
-              album.url = url;
-              album.thumbnailUrl = url;
-              _albumController.editItem(album);
+      floatingActionButton: buildFloatingActionButton(),
+    );
+  }
 
-              //Get.offNamedUntil(routeHome, (route) => false);
-              Get.until((route) => Get.currentRoute == routeHome);
-            } else {
-              _albumController.addItem(url, title);
-              Get.back();
-            }
+  FloatingActionButton buildFloatingActionButton() {
+    return FloatingActionButton(
+      onPressed: () {
+        String url = _albumURLTextController.value.text;
+        String title = _albumTitleTextController.value.text;
+        if (!GetUtils.isNullOrBlank(title) && GetUtils.isURL(url)) {
+          if (isEdit) {
+            album.title = title;
+            album.url = url;
+            album.thumbnailUrl = url;
+            _albumController.editItem(album);
+
+            //Get.offNamedUntil(routeHome, (route) => false);
+            Get.until((route) => Get.currentRoute == routeHome);
           } else {
-            _showToast();
+            _albumController.addItem(url, title);
+            Get.back();
           }
-        },
-        child: Icon(Icons.done),
-      ),
+        } else {
+          _showToast();
+        }
+      },
+      child: Icon(Icons.done),
     );
   }
 

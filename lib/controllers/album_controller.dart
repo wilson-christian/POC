@@ -6,7 +6,7 @@ import 'package:upstreet_flutter_code_challenge/services/remote_service.dart';
 
 class AlbumController extends GetxController {
   var isLoading = true.obs;
-  var productList = List<Album>().obs;
+  var albumList = List<Album>().obs;
 
   @override
   void onInit() {
@@ -20,7 +20,7 @@ class AlbumController extends GetxController {
       isLoading(true);
       var products = await RemoteServices.fetchAlbumss();
       if (products != null) {
-        productList.assignAll(products);
+        albumList.assignAll(products);
       }
     } finally {
       isLoading(false);
@@ -28,8 +28,8 @@ class AlbumController extends GetxController {
   }
 
   void addItem(String url, String title) {
-    int maxIndex = productList.map<int>((e) => e.id).reduce(max);
-    productList.insert(
+    int maxIndex = albumList.map<int>((e) => e.id).reduce(max);
+    albumList.insert(
         0,
         Album(
             albumId: 1,
@@ -40,7 +40,7 @@ class AlbumController extends GetxController {
   }
 
   void editItem(Album album) {
-    int index = productList.indexWhere((element) => element.id == album.id);
-    productList[index] = album;
+    int index = albumList.indexWhere((element) => element.id == album.id);
+    albumList[index] = album;
   }
 }
