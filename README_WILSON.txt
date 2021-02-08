@@ -29,7 +29,7 @@
 - Code uploaded at : https://github.com/wilson-christian/POC
 - Public repo & its name is POC so as you mentioned not other candidate could copy it
 - Visual Studio Code with flutter setup could run the code easily (Android studio also works)
-- For android debug apk you can simply run 'flutter build apk --debug' in cmd where the folder is located
+- For android debug apk you can simply run 'flutter build apk --debug' in cmd inside the project folder
 - You can get debug apk at : ...POC\build\app\outputs\apk\debug this location in your computer
 - For release APK & IPA you can follow
 - APK : https://flutter.dev/docs/deployment/android
